@@ -7,6 +7,9 @@
 <body>
 <script src="js/DecycledJSON.js"></script>
 <script type="text/javascript">
+    /************************************/
+    // CLASS OBJECT
+
     function Person() {
         this.name = null;
         this.child = null;
@@ -24,14 +27,35 @@
     Child.dad = Dad;
     Child.mom = Mom;
 
-    console.log('Dad', Dad);
-    console.log('Mom', Mom);
-    console.log('Child', Child);
+//    console.log('Dad', Dad);
+//    console.log('Mom', Mom);
+//    console.log('Child', Child);
 
-    jsonChild = DJS.stringify(Child);
-    jsonChild = JSON.stringify(Child);
-    console.log(jsonChild);
+    console.log(Child); // ORIGINAL
+
+    // SERIALIZE AND THEN PARSE
+    var jsonChild = DJS.stringify(Child);
     console.log(DJS.parse(jsonChild));
+
+    /************************************/
+    var obj = {
+        id:201,
+        box: {
+            owner: null,
+            key: 'storm'
+        },
+        lines:[
+            'item1',
+            23
+        ]
+    };
+
+    console.log(obj); // ORIGINAL
+
+    // SERIALIZE AND THEN PARSE
+    var jsonObj = DJS.stringify(obj);
+    console.log(DJS.parse(jsonObj));
+
 </script>
 </body>
 </html>

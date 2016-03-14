@@ -104,11 +104,13 @@ DJSNode.Revive = function (xmlNode, isRoot) {
     if(window[xmlNode.constructorName].toString().indexOf('[native code]') > -1 ) {
         // yep, native in the browser
         if(xmlNode.constructorName == 'Object'){
-            return {};
+            root = {};
+        }else{
+            return null;
         }
-        return null;
+    }else {
+        eval('root = new ' + xmlNode.constructorName + "()");
     }
-    eval('root = new ' + xmlNode.constructorName + "()");
 
     //CACHE ROOT INTO REVIVE-CACHE
     DJSHelper.ReviveCache[xmlNode.attributes.hashID] = root;
